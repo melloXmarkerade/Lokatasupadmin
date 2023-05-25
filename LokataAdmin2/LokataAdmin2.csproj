@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Pages\AccountList\AccountList.razor" />
+    <None Include="Pages\Admin Account\AccountRegistration.razor" />
+    <None Include="Pages\Counter.razor" />
+    <None Include="Pages\FetchData.razor" />
+    <None Include="Pages\Impounded Vehicle\VehicleList.razor" />
+    <None Include="Pages\Index.razor" />
+    <None Include="Pages\SwitchMode\AdminMode.razor" />
+    <None Include="Pages\Tickets\TicketList.razor" />
+    <None Include="wwwroot\Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+</Project>

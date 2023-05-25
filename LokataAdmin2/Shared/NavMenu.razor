@@ -1,0 +1,120 @@
+﻿@inject NavigationManager NavigationManager
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Lokata SuperAdmin</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @if (!isLoginPressed)
+        {
+            <button @onclick="ToggleLogin">Login</button>
+            
+        }
+        
+        @if (isLogoutPressed)
+        {
+
+            <button @onclick="ToggleLogout">Logout</button>
+        }
+
+
+        @if (!isButtonPressed)
+        {
+            <div class="form-group row">
+                <label class="col-md-12" style="color:white;">Username</label>
+
+                <input type="username" id="username" name="username" placeholder="Enter your username" class="form-control" />
+
+            </div>
+            <div class="form-group row">
+                <label class="col-md-12" style="color:white;">Password</label>
+
+                <input type="password" id="password" name="password" placeholder="Enter your Password" class="form-control" />
+
+            </div>
+        }
+
+       
+    </div>
+    
+</div>
+
+
+@if (isUserLoggedIn)
+{
+    <div class="navbar">
+        <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+            <nav class="flex-column">
+                
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="AccountRegistration" @onclick="()=>expandSubMenu= !expandSubMenu">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Admin Account 🢃
+                    </NavLink>
+                    @if (expandSubMenu)
+                    {
+                        <ul class="nav flex-column">
+                            <li class="nav-item px-3">
+                                <NavLink class="nav-link" href="AccountList">
+                                    <span class="oi oi-list-rich" aria-hidden="true"></span> Account List ➔
+                                </NavLink>
+                            </li>
+
+                        </ul>
+                    }
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="VehicleList">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Impounded Vehicle ➔
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="TicketList">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Tickets ➔
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="AdminMode">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Switch Mode ➔
+                    </NavLink>
+                </div>
+            </nav>
+        </div>
+    </div>
+}
+}
+
+@code {
+    private bool collapseNavMenu = true;
+    private bool expandSubMenu;
+    public bool isUserLoggedIn = false;
+    public bool isButtonPressed = false;
+    public bool isLoginPressed = false;
+    public bool isLogoutPressed = false;
+
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+    void ToggleLogin()
+    {
+        isLogoutPressed = !isLogoutPressed;
+        isLoginPressed = !isLoginPressed;
+        isButtonPressed = !isButtonPressed;
+        isUserLoggedIn = !isUserLoggedIn;
+        NavigationManager.NavigateTo("/AccountRegistration");
+    }
+    void ToggleLogout()
+    {
+        isLoginPressed = !isLoginPressed;
+        isLogoutPressed = !isLogoutPressed;
+        isButtonPressed = !isButtonPressed;
+        isUserLoggedIn = !isUserLoggedIn;
+        NavigationManager.NavigateTo("/");
+    }
+  
+
+}

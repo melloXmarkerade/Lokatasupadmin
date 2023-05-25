@@ -1,0 +1,39 @@
+﻿@page "/ViewAccount"
+@inject NavigationManager NavigationManager
+
+<p style="color:red">======== NOTE: NOT FINAL CHANGES MAY APPLIED WITHOUT FURTHER NOTICE ===========</p>
+<h3>View Account</h3>
+&nbsp;
+<hr />
+
+<form>
+	<label for="IdNum" style="font-size: 25px; margin-bottom: 20px;">ID Number:</label><br>
+
+	<label for="username" style="font-size: 25px; margin-bottom: 20px;">Username:</label><br>
+
+	<label for="email" style="font-size: 25px; margin-bottom: 20px;">Email:</label><br>
+
+	<label for="password" style="font-size: 25px; margin-bottom: 20px;">Password:</label><br>
+
+	<label for="first_name" style="font-size: 25px; margin-bottom: 20px;">First Name:</label><br>
+
+	<label for="last_name" style="font-size: 25px; margin-bottom: 20px;">Last Name:</label><br>
+
+	<label for="phone" style="font-size: 25px; margin-bottom: 20px;">Phone Number:</label><br>
+
+	<label for="birthdate" style="font-size: 25px; margin-bottom: 20px;">Birthdate:</label>
+
+	<hr />
+
+	<button class="btn btn-primary" @onclick="BackButton" style="font-size: 15px;">Return to List</button>
+	<hr />
+</form>
+
+<p style="color:red">======== NOTE: NOT FINAL CHANGES MAY APPLIED WITHOUT FURTHER NOTICE ===========</p>
+
+@code {
+	private void BackButton()
+	{
+		NavigationManager.NavigateTo("/AccountList");
+	}
+}

@@ -1,0 +1,38 @@
+﻿@page "/VehicleDetails"
+@inject NavigationManager NavigationManager
+
+
+<p style="color:red">======== NOTE: NOT FINAL CHANGES MAY APPLIED WITHOUT FURTHER NOTICE ===========</p>
+
+<h3>Vehicle Details</h3>
+&nbsp;
+<hr />
+
+<form>
+	<label for="VehicleID" style="font-size: 25px; margin-bottom: 20px;">Vehicle ID:</label><br>
+
+	<label for="PlateNum" style="font-size: 25px; margin-bottom: 20px;">Plate Number:</label><br>
+
+	<label for="trackingId" style="font-size: 25px; margin-bottom: 20px;">Tracking Id:</label><br>
+
+	<label for="Make" style="font-size: 25px; margin-bottom: 20px;">Make:</label><br>
+
+	<label for="Model" style="font-size: 25px; margin-bottom: 20px;">Model:</label><br>
+
+	<label for="Color" style="font-size: 25px; margin-bottom: 20px;">Color:</label><br>
+
+	<hr />
+
+	<button class="btn btn-primary" @onclick="BackButton" style="font-size: 15px;">Return to List</button>
+	<hr />
+</form>
+
+<p style="color:red">======== NOTE: NOT FINAL CHANGES MAY APPLIED WITHOUT FURTHER NOTICE ===========</p>
+
+
+@code {
+	private void BackButton()
+	{
+		NavigationManager.NavigateTo("/VehicleList");
+	}
+}

@@ -1,0 +1,19 @@
+﻿@page "/logout"
+@inject NavigationManager NavigationManager
+
+
+<h3>Confirm Logout?</h3>
+&nbsp;
+<hr/>
+
+<div class="form-group">
+    <button type="submit" class="btn btn-primary" @onclick="ToDashboard">Logout</button> <!-- onclick="Login" -->
+</div>
+
+
+@code {
+    private void ToDashboard()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

@@ -1,0 +1,86 @@
+﻿@page "/AccountList"
+@inject NavigationManager NavigationManager
+
+
+<p style="color:red">======== NOTE: NOT FINAL CHANGES MAY APPLIED WITHOUT FURTHER NOTICE ===========</p>
+<h3>AccountList</h3>
+&nbsp;
+<hr />
+<div class="form-group row">
+    <label class=" col-md-12">Search</label>
+    <div class="col-md-4">
+        <input class="form-control" /> <!-- bind="*"-->
+    </div>
+
+</div>
+
+&nbsp;
+
+<div class="form-group">
+    <button class="btn btn-primary">Search</button> <!--onclick="AccountSearch"-->
+    <!-- <ValidationMessage For="*" /> -->
+</div>
+
+&nbsp;
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>IDNumber</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in items)
+        {
+            <tr>
+                <td>@item.TCTNum</td>
+                <td>@item.VehicleDescription</td>
+                <td>@item.PlateNum</td>
+                <td>@item.Name</td>
+                <td><button @onclick="@(() => Edit(item))">View Accounts</button></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+&nbsp;
+
+<hr />
+
+<p style="color:red">======== NOTE: NOT FINAL CHANGES MAY APPLIED WITHOUT FURTHER NOTICE ===========</p>
+
+
+@code {
+    List<Item> items;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        // Initialize collection of items get it from some service or context
+        items = new List<Item>
+    {
+            new Item {TCTNum = "J027992", Date = "12-4-2022 ", PlaceOfApprehension = "J.P Rizal Jayme Street", VehicleDescription = "Yamaha, Mio Sporty, Black", PlateNum = "6860 YE", Violation = "2", ItemConfiscated = "Driver's License, Motor Vehicle" },
+            new Item {TCTNum = "4283321", Date = "7-14-2021", PlaceOfApprehension = "Tabok, Mandaue", VehicleDescription = "Yamaha, Mio Sporty, Black", PlateNum = "6860 YE", Violation = "2", ItemConfiscated = "Driver's License, Motor Vehicle"},
+            new Item {TCTNum = "4283321", Date = "7-14-2021", PlaceOfApprehension = "Tabok, Mandaue", VehicleDescription = "Yamaha, Mio Sporty, Black", PlateNum = "6860 YE", Violation = "2", ItemConfiscated = "Driver's License, Motor Vehicle"},
+        };
+    }
+
+    void Edit(Item item) => NavigationManager.NavigateTo("/ViewAccount");
+
+    class Item
+    {
+        public string Name { get; set; }
+        public string TCTNum { get; set; }
+        public string Date { get; set; }
+        public string PlaceOfApprehension { get; set; }
+        public string VehicleDescription { get; set; }
+        public string PlateNum { get; set; }
+        public string Violation { get; set; }
+        public string ItemConfiscated { get; set; }
+    }
+}
